@@ -15,6 +15,3 @@ public/
 
 # Local Netlify folder
 .netlify
-
-# Secrets
-rustlings-secrets.yml

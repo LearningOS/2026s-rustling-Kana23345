@@ -1,64 +1,27 @@
 ## 2026年春夏季操作系统训练营
 
-### 致学员的 AI 使用指南
+导学阶段将通过Rustlings进行测试，请按照以下步骤进行练习：
 
-我们鼓励学员合理使用 AI 工具辅助学习，但请注意：
-⚠️ 直接复制 AI 生成的答案如同「空中楼阁」—— 您将失去：
+1. 在网络浏览器中用自己的 github id 登录 github.com。
+2. 本仓库已经自动建立好，可以直接看到你要完成的实验了，有两种方式进行答题：
+* 本地环境：
+  1. **安装Linux的环境**。对于windows的用户，推荐使用wsl2安装Ubuntu 22.04，也可以使用vmware等虚拟机进行安装。如果在这一步存在问题，请联系助教。
+  2. **创建ssh key，用于ssh方式克隆github代码**。在linux环境下，使用`ssh-keygen -t rsa -b 4096 -C "你的邮箱"`命令，创建ssh key，下面的选项全部直接敲回车即可。 随后使用` cat ~/.ssh/id_rsa.pub` 命令查看生成的公钥，并完整的复制下来。 在github仓库界面点击自己的头像，选择`settings`。进入到设置页面后，点击左侧的`SSH and GPG keys`选项。点击`New SSH key`选项，并将复制下来的内容粘贴上去，添加该ssh key的描述。随后点击`Add SSH key`，并一路点击确认即可。
+  3. **本地安装rust**。进入linux环境下，参考Arceos 教程 [Rust 开发环境配置 - ArceOS Tutorial Book (rcore-os.cn)](https://rcore-os.cn/arceos-tutorial-book/ch01-02.html) 中，找到Rust 开发环境配置的章节，相应配置即可，你可以同时将后续需要的环境也配置好.
+  4. **clone实验仓库到本地**。在前面点击链接生成的仓库中，同样点击醒目的 `code` 绿色按钮，选择`local`下的`ssh`选项，复制下面的链接。随后回到本地linux环境下，使用`git clone 复制的链接`的方式，将目标仓库clone到本地。随后，使用`ls`命令查看自己clone下来的文件夹，再使用`cd`命令进入到该文件夹下，使用  `cargo install --force --path .`  安装rustlings。
+  5. **练习rustlings**。使用VSCode等编辑器，进入clone下来的目录下的`exercises`文件夹，执行`rustlings watch`依次查看完成情况，并依次完成对应的练习。 执行`rustlings run 练习名称`去运行对应练习，也可以使用`rustlings hint 练习名称`查看题解。
+  6. **提交完成情况**。当做完部分或所有练习之后，在rustlings目录下执行 `git add .; git commit -m "update"; git push` 命令，把更新提交到GithubClassroom的CI进行自动评测。你可以在github仓库页面的actions分页看到你的CI提交结果，或者训练营官网查看自己的评分。
+* 在线环境：
 
-- 对 Rust 底层原理的深刻认知
-- 排错调试的关键能力培养
-- 从错误中成长的珍贵机会
+  1. 如果使用在线环境，在本网页的中上部可以看到一个醒目的 `code` 绿色按钮，点击后，可以进一步看到 `codespace` 标签和醒目的 `create codesapce on main` 绿色按钮。请点击这个绿色按钮，就可以进入到在线的ubuntu +VSCode环境中
 
-✅ 正确打开方式：
+  1. 再按照下面的环境安装提示在VSCode的 `console` 中安装配置开发环境：rustc等工具。
 
-- 先用手工实现理解基础流程
-- 用 AI 优化时追问「为什么这样修改」
-- 在本地反复验证每个命令的效果
+  3. 然后就可以基于在线VSCode进行测试 (执行命令 `rustlings watch` ），编辑代码的循环实验过程了。
 
-### 练习内容
+3. 上述步骤有任何问题都可以找助教。
 
-导学阶段将通过 Rustlings 进行测试，包含以下练习内容：
-
-- 基础语法练习（变量、函数、条件语句等）
-- 所有权与借用练习
-- 结构体与枚举练习
-- 错误处理练习
-- 泛型与特征练习
-- 并发编程练习
-
-### 前置条件
-
-- 您必须报名 2026年春夏季操作系统训练营
-- 您必须在 opencamp.cn 的个人中心，填写您的 CNB 用户名来完成账号绑定
-
-### 操作流程
-
-1. 在网络浏览器中用自己的账号登录 [cnb.cool](https://cnb.cool)。
-2. Fork 本仓库, 解锁作业副本。
-3. 在您 Fork 的仓库中点击 main 分支旁的「云原生开发」按钮，即可启动在线开发环境（WebIDE，也可以使用 SSH 进行远程连接），自动配置好 Rust 工具链和 rustlings。
-4. 在 WebIDE 的终端中执行 `rustlings watch`，即可开始练习。
-5. 完成练习后，将代码提交至远程仓库，并创建 PR，在 PR 页面会自动运行测评流水线。
-6. 最后可以在 PR 页面来查看评分过程（可多次提交代码，每次提交都会触发评分，以最高分为准）
-7. 最终成绩会显示在 opencamp.cn 的个人中心以及课程页面的晋级榜单处。
-
-
-### 温馨提示: CNB平台成绩提交指南
-
-a.注册[opencamp](https://opencamp.cn)和 [cnb](https://cnb.cool)平台账号
-
-b.登录[opencamp](https://opencamp.cn)，点击[编辑个人信息](https://opencamp.cn/my/edit?tab=userInfo)
-
-c.下拉页面，找到CNBName和GithubName (填入正确的账号用户名）
-
-d.不记得CNB账户看这里 -->[点此查询CNB账号信息](https://cnb.cool/profile/account)
-新建cnb，默认用户名是cnb.xxx（填入步骤c即可）
-
-等待CI测评流水线运行，提交PR，就会更新成绩
-
-### 注意事项
-
-- 上述步骤有任何问题都可以找助教。
-- 下面是官方的 Rustlings 说明，可以参考，**请务必不要拉取下面的仓库！**
+4. 下面是官方的Rustlings的布置，可以参考，**请务必不要拉取下面的仓库！**
 
 # rustlings 🦀❤️
 
