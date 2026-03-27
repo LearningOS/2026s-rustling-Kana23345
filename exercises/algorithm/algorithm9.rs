@@ -1,11 +1,12 @@
 /*
-	heap
-	This question requires you to implement a binary heap function
+    heap
+    This question requires you to implement a binary heap function
 */
-// I AM NOT DONE
 
 use std::cmp::Ord;
 use std::default::Default;
+use std::iter;
+use std::mem::swap;
 
 pub struct Heap<T>
 where
@@ -36,8 +37,31 @@ where
         self.len() == 0
     }
 
+    //todo
+    fn down_move(&mut self) {
+        let mut ind = 1 as usize;
+        let mut scind = self.smallest_child_idx(ind);
+        while scind != 0 && !(self.comparator)(&self.items[ind], &self.items[scind]) {
+            self.items.swap(ind, scind);
+            ind = scind;
+            scind = self.smallest_child_idx(ind);
+        }
+    }
+    fn up_move(&mut self) {
+        let mut ind = self.count;
+        let mut pind = self.parent_idx(ind);
+        while ind > 1 && (self.comparator)(&self.items[ind], &self.items[self.parent_idx(ind)]) {
+            self.items.swap(ind, pind);
+            ind = self.parent_idx(ind);
+            pind = self.parent_idx(ind);
+        }
+    }
+
     pub fn add(&mut self, value: T) {
         //TODO
+        self.items.push(value);
+        self.count += 1;
+        self.up_move();
     }
 
     fn parent_idx(&self, idx: usize) -> usize {
@@ -58,7 +82,19 @@ where
 
     fn smallest_child_idx(&self, idx: usize) -> usize {
         //TODO
-		0
+        let lind = self.left_child_idx(idx);
+        let rind = self.left_child_idx(idx) + 1;
+        if rind > self.count && lind <= self.count {
+            return lind;
+        } else if lind > self.count {
+            return 0;
+        } else {
+            if (self.comparator)(&self.items[lind], &self.items[rind]) {
+                return lind;
+            } else {
+                return rind;
+            }
+        }
     }
 }
 
@@ -85,7 +121,14 @@ where
 
     fn next(&mut self) -> Option<T> {
         //TODO
-		None
+        if self.is_empty() {
+            return None;
+        }
+        self.items.swap(1, self.count);
+        let v = self.items.pop();
+        self.count -= 1;
+        self.down_move();
+        return v;
     }
 }
 
